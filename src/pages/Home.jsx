@@ -61,15 +61,15 @@ const Home=()=> {
         <>
             <div className="container">
                 <div className="movies-container">
-                    {topMovies.length === 0 && <p>Carregando...</p>}
+                    {topMovies.length === 0 && <p className="alert">Carregando...</p>}
                     {topMovies.map(movie => (
                         <MovieCard key={movie.id} movie={movie} />
                 ))}
                 </div>
             </div>
             <div ref={loader}>
-                {loading && <p>Carregando...</p>}
-                {!loading && !hasMore && <p>Sem mais resultados</p>}
+                {loading && <p className="alert">Carregando...</p>}
+                {!loading && !hasMore && <p className="alert">Sem mais resultados</p>}
             </div>
         </>
     )
