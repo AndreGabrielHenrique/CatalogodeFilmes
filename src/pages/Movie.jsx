@@ -6,7 +6,8 @@ import {
     BsHourglassSplit,
     BsFillFileEarmarkTextFill,
     BsCalendar,
-    BsClipboard } from "react-icons/bs"
+    BsClipboard,
+    BsTranslate  } from "react-icons/bs"
 import './Movie.css'
 import MovieCard from "../components/MovieCard"
 
@@ -60,6 +61,12 @@ const Movie=()=> {
                 <>
                     <MovieCard movie={movie} showLink={false} />
                     <p className="tagline">{movie.tagline}</p>
+                    <div className="info">
+                        <h4>
+                            <BsTranslate /> Título original
+                        </h4>
+                        <p>{movie.original_title}</p>
+                    </div>
                     <div className="info">
                         <h4>
                             <BsCalendar /> Data de lançamento
