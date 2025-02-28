@@ -21,6 +21,10 @@ const Movie=()=> {
     const navigate = useNavigate()
     const [movie, setMovie] = useState(null)
 
+    useEffect(()=> {
+        document.title = "Detalhes do filme"
+    }, [id])
+
     const getMovie = async (url) => {
         const response = await fetch(url)
         const data = await response.json()

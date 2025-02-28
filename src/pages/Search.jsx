@@ -17,6 +17,10 @@ const Search=()=> {
   const loader = useRef(null)
 
   useEffect(()=> {
+      document.title = "Resultados da busca"
+  }, [query])
+
+  useEffect(()=> {
     setMovies([])
     setPage(1)
     setHasMore(true)
