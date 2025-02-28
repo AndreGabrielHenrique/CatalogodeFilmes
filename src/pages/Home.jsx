@@ -10,6 +10,7 @@ const Home=()=> {
     const [page, setPage] = useState(1)
     const [loading, setLoading] = useState(false)
     const [hasMore, setHasMore] = useState(true)
+    const [restored, setRestored] = useState(false)
     const loader = useRef(null)
 
     const getTopRatedMovies = async (pageNum)=> {
@@ -24,12 +25,12 @@ const Home=()=> {
         if (data.results.length === 0 || pageNum >= data.total_pages) {
             setHasMore(false)
         }
-
+        
         setLoading(false)
     }
 
     useEffect(()=> {
-        if(hasMore) {
+        if (hasMore) {
             getTopRatedMovies(page)
         }
     }, [page, hasMore])
@@ -56,6 +57,17 @@ const Home=()=> {
             if (loader.current) observer.unobserve(loader.current)
         }
     }, [handleObserver])
+
+    useEffect(() => {
+        if (!restored && topMovies.length > 0) {
+          const savedPosition = sessionStorage.getItem('scrollPosition')
+          if (savedPosition) {
+            window.scrollTo(0, parseInt(savedPosition, 10))
+            sessionStorage.removeItem('scrollPosition')
+            setRestored(true)
+          }
+        }
+      }, [topMovies, restored])
     
     return (
         <>

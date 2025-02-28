@@ -20,10 +20,17 @@ const Movie=()=> {
     const { id } = useParams()
     const navigate = useNavigate()
     const [movie, setMovie] = useState(null)
+    const [canGoBack, setCanGoBack] = useState(false)
 
     useEffect(()=> {
         document.title = "Detalhes do filme"
     }, [id])
+
+    useEffect(() => {
+        if (window.history.length > 1) {
+            setCanGoBack(true)
+        }
+    }, [])
 
     const getMovie = async (url) => {
         const response = await fetch(url)
@@ -34,7 +41,7 @@ const Movie=()=> {
     useEffect(()=> {
         const movieUrl = `${moviesURL}${id}?${apiKey}&language=pt-BR`
         getMovie(movieUrl)
-    },[])
+    },[id])
 
     const formatCurrency=(number)=> {
         const converted = number * conversionRate;
@@ -58,9 +65,11 @@ const Movie=()=> {
     return (
       <>
         <div className="movie-page">
-            <a className="back-page" onClick={()=> navigate(-1)}>
-                Voltar à página anterior
-            </a>
+            {canGoBack && (
+                <a className="back-page" onClick={() => navigate(-1)}>
+                    Voltar à página anterior
+                </a>
+            )}
             {movie && (
                 <>
                     <MovieCard movie={movie} showLink={false} />

@@ -4,6 +4,10 @@ import { FaStar } from "react-icons/fa"
 const imageUrl = import.meta.env.VITE_IMG 
 
 const MovieCard=({movie, showLink = true})=> {
+    const handleSaveScroll=()=> {
+        sessionStorage.setItem('scrollPosition', window.scrollY)
+    }
+
     return (
         <>
             <div className="movie-card">
@@ -12,7 +16,7 @@ const MovieCard=({movie, showLink = true})=> {
                 <p>
                     <FaStar /> {movie.vote_average}
                 </p>
-                {showLink && <Link to={`/movie/${movie.id}`} rel="noopener noreferrer">Ver detalhes</Link>}  
+                {showLink && <Link to={`/movie/${movie.id}`} onClick={handleSaveScroll}>Ver detalhes</Link>}  
             </div>            
         </>
     )
