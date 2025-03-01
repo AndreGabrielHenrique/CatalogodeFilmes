@@ -1,5 +1,5 @@
 import { useState,useEffect } from "react"
-import { useParams, useNavigate } from "react-router-dom"
+import { useParams, useNavigate, useLocation } from "react-router-dom"
 import { 
     BsGraphUp,
     BsWallet2,
@@ -13,24 +13,18 @@ import MovieCard from "../components/MovieCard"
 
 const moviesURL = import.meta.env.VITE_API
 const apiKey = import.meta.env.VITE_API_KEY
-
 const conversionRate = 5.0
 
 const Movie=()=> {
     const { id } = useParams()
     const navigate = useNavigate()
+    const location = useLocation()
+    const canGoBack = location.state && location.state.from ? true : false
     const [movie, setMovie] = useState(null)
-    const [canGoBack, setCanGoBack] = useState(false)
 
     useEffect(()=> {
         document.title = "Detalhes do filme"
     }, [id])
-
-    useEffect(() => {
-        if (window.history.length > 1) {
-            setCanGoBack(true)
-        }
-    }, [])
 
     const getMovie = async (url) => {
         const response = await fetch(url)

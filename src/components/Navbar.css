@@ -57,3 +57,11 @@
     background-color: #d133174b;
     color: #f81a1aec;
 }
+
+@media screen and (max-width: 600px)
+{
+    #navbar h2 a
+    {
+        font-size: 1.2rem;
+    }
+}

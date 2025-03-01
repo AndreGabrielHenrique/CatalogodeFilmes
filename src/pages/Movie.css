@@ -61,14 +61,23 @@
 
 .back-page
 {
-    margin-bottom: 1rem;
-    color: #fff;
     cursor: pointer;
+    position: fixed;
+    left: 30px;
+    padding: .6rem .6rem;
+    border-radius: 6px;
+    border: none;
+    background-color: #fff;
+    color: #f81a1aec;
+    align-items: center;
+    transition: .2s;
+    text-align: center;
+    font-weight: bold;
     font-size: 1.3rem;
 }
 
 .back-page:hover
 {
-    text-decoration: underline;
+    background-color: #d133174b;
     color: #fff;
 }

@@ -5,7 +5,9 @@ const imageUrl = import.meta.env.VITE_IMG
 
 const MovieCard=({movie, showLink = true})=> {
     const handleSaveScroll=()=> {
-        sessionStorage.setItem('scrollPosition', window.scrollY)
+        const scrollPosition = window.scrollY
+        const currentState = history.state || {}
+        history.replaceState({ ...currentState, scrollPosition }, '')
     }
 
     return (
@@ -16,7 +18,7 @@ const MovieCard=({movie, showLink = true})=> {
                 <p>
                     <FaStar /> {movie.vote_average}
                 </p>
-                {showLink && <Link to={`/movie/${movie.id}`} onClick={handleSaveScroll}>Ver detalhes</Link>}  
+                {showLink && <Link to={`/movie/${movie.id}`} onClick={handleSaveScroll} state={{ from: window.location.pathname }}>Ver detalhes</Link>}  
             </div>            
         </>
     )

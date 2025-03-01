@@ -72,13 +72,14 @@ const Search=()=> {
     }
   }, [handleObserver])
 
-  useEffect(() => {
+  useEffect(()=> {
     if (!restored && movies.length > 0) {
-      const savedPosition = sessionStorage.getItem('scrollPosition')
-      if (savedPosition) {
-        window.scrollTo(0, parseInt(savedPosition, 10))
-        sessionStorage.removeItem('scrollPosition')
-        setRestored(true)
+      const savedPosition = history.state?.scrollPosition
+      if (savedPosition !== undefined) {
+          setTimeout(()=> {
+              window.scrollTo(0, savedPosition)
+          }, 100)
+          setRestored(true)
       }
     }
   }, [movies, restored])
