@@ -17,8 +17,8 @@ const Search=()=> {
   const [restored, setRestored] = useState(false)
   const loader = useRef(null)
 
-  useEffect(()=> {
-      document.title = "Resultados da busca"
+  useEffect(() => {
+    document.title = `Resultados da busca por ${query}`
   }, [query])
 
   useEffect(()=> {

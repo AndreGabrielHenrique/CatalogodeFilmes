@@ -68,12 +68,18 @@
 
 .nenhum-resultado
 {
-    align-items: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    width: 100%;
 }
 
 .alert
 {
     text-align: center;
+    margin: 0 auto;
     font-size: 3rem;
     font-weight: bold;
     margin-bottom: 2rem;

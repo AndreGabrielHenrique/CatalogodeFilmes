@@ -7,9 +7,12 @@ import {
     BsFillFileEarmarkTextFill,
     BsCalendar,
     BsClipboard,
-    BsTranslate  } from "react-icons/bs"
+    BsTranslate,
+    BsGlobe  } from "react-icons/bs"
 import './Movie.css'
 import MovieCard from "../components/MovieCard"
+import useCountryTranslation from "../hooks/useCountryTranslation"
+
 
 const moviesURL = import.meta.env.VITE_API
 const apiKey = import.meta.env.VITE_API_KEY
@@ -21,12 +24,13 @@ const Movie=()=> {
     const location = useLocation()
     const canGoBack = location.state && location.state.from ? true : false
     const [movie, setMovie] = useState(null)
+    const { translateCountry } = useCountryTranslation()
 
     useEffect(()=> {
-        document.title = "Detalhes do filme"
-    }, [id])
+        document.title = movie ? `Detalhes do filme ${movie.title}` : "Detalhes do filme"
+    }, [id, movie])
 
-    const getMovie = async (url) => {
+    const getMovie = async (url)=> {
         const response = await fetch(url)
         const data = await response.json()
         setMovie(data)
@@ -45,7 +49,7 @@ const Movie=()=> {
         })
     }
 
-    const formatDate = (dateString) => {
+    const formatDate = (dateString)=> {
         if (!dateString) return ''
 
         const date = new Date(dateString)
@@ -60,64 +64,96 @@ const Movie=()=> {
       <>
         <div className="movie-page">
             {canGoBack && (
-                <a className="back-page" onClick={() => navigate(-1)}>
+                <a className="back-page" onClick={()=> navigate(-1)}>
                     Voltar à página anterior
                 </a>
             )}
             {movie && (
                 <>
                     <MovieCard movie={movie} showLink={false} />
-                    <p className="tagline">{movie.tagline}</p>
-                    <div className="info">
-                        <h4>
-                            <BsTranslate /> Título original
-                        </h4>
-                        <p>{movie.original_title}</p>
-                    </div>
-                    <div className="info">
-                        <h4>
-                            <BsCalendar /> Data de lançamento
-                        </h4>
-                        <p>{formatDate(movie.release_date)}</p>
-                    </div>
-                    <div className="info">
-                        <h4>
-                            <BsClipboard /> Gênero
-                        </h4>
-                        <p>
-                            {movie.genres && movie.genres.length > 0
-                            ? movie.genres.map((genre, index) => (
-                                <span key={index}>
-                                    {genre.name}{index < movie.genres.length - 1 ? ', ' : ''}
-                                </span>
-                                ))
-                            : "Sem gênero"}
-                        </p>
-                    </div>
-                    <div className="info">
-                        <h4>
-                            <BsWallet2 /> Orçamento
-                        </h4>
-                        <p>{formatCurrency(movie.budget)}</p>
-                    </div>
-                    <div className="info">
-                        <h4>
-                            <BsGraphUp /> Faturamento
-                        </h4>
-                        <p>{formatCurrency(movie.revenue)}</p>
-                    </div>
-                    <div className="info">
-                        <h4>
-                            <BsHourglassSplit /> Duração
-                        </h4>
-                        <p>{movie.runtime} minutos</p>
-                    </div>
-                    <div className="info description">
-                        <h4>
-                            <BsFillFileEarmarkTextFill /> Sinopse
-                        </h4>
-                        <p>{movie.overview ? movie.overview : "Sem sinopse"}</p>
-                    </div>
+                    {movie.tagline && movie.tagline.trim() !== "" && (
+                        <p className="tagline">{movie.tagline}</p>
+                    )}
+                    {movie.original_title && movie.original_title !== movie.title && (
+                        <div className="info">
+                            <h4>
+                                <BsTranslate /> Título original
+                            </h4>
+                            <p>
+                                {movie.original_title}
+                            </p>
+                        </div>
+                    )}
+                    {movie.production_countries && movie.production_countries.length > 0 && (
+                        <div className="info">
+                            <h4>
+                                <BsGlobe /> País de origem
+                            </h4>
+                            <p>
+                                {movie.production_countries.map ((country, index)=> (
+                                    <span key={index}>
+                                        {translateCountry(country.name)}
+                                        {index < movie.production_countries.length - 1 ? ", " : ""}
+                                    </span>
+                                ))}
+                            </p>
+                        </div>
+                    )}
+                    {movie.release_date && (
+                        <div className="info">
+                            <h4>
+                                <BsCalendar /> Data de lançamento
+                            </h4>
+                            <p>{formatDate(movie.release_date)}</p>
+                        </div>
+                    )}
+                    {movie.genres && movie.genres.length > 0 && (
+                        <div className="info">
+                            <h4>
+                                <BsClipboard /> Gênero
+                            </h4>
+                            <p>
+                                {movie.genres.map ((genre, index)=> (
+                                    <span key={index}>
+                                        {genre.name}
+                                        {index < movie.genres.length - 1 ? ", " : ""}
+                                    </span>
+                                ))}
+                            </p>
+                        </div>
+                    )}
+                    {movie.budget > 0 && (
+                        <div className="info">
+                            <h4>
+                                <BsWallet2 /> Orçamento
+                            </h4>
+                            <p>{formatCurrency(movie.budget)}</p>
+                        </div>
+                    )}
+                    {movie.revenue > 0 && (
+                        <div className="info">
+                            <h4>
+                                <BsGraphUp /> Faturamento
+                            </h4>
+                            <p>{formatCurrency(movie.revenue)}</p>
+                        </div>
+                    )}
+                    {movie.runtime > 0 && (
+                        <div className="info">
+                            <h4>
+                                <BsHourglassSplit /> Duração
+                            </h4>
+                            <p>{movie.runtime} minutos</p>
+                        </div>
+                    )}
+                    {movie.overview && movie.overview !== "Sem sinopse" && (
+                        <div className="info description">
+                            <h4>
+                                <BsFillFileEarmarkTextFill /> Sinopse
+                            </h4>
+                            <p>{movie.overview}</p>
+                        </div>
+                    )}
                 </>
             )}
         </div>
