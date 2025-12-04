@@ -1,0 +1,51 @@
+@use '../styles/variables' as v
+
+#navbar
+  display: flex
+  justify-content: space-between
+  align-items: center
+  padding: v.$spacing-md v.$spacing-xl
+  background-color: v.$white
+  position: fixed
+  top: 0
+  left: 0
+  right: 0
+  z-index: 1000
+
+  h2 a
+    display: flex
+    align-items: center
+    gap: 0.7rem
+
+  form
+    display: flex
+    gap: v.$spacing-sm
+
+    input
+      padding: v.$spacing-xs v.$spacing-sm
+      border-radius: v.$border-radius-sm
+      border: 1px solid v.$primary-red
+      outline: none
+
+      &::placeholder
+        color: v.$dark-bg
+
+    button
+      padding: v.$spacing-xs
+      border-radius: v.$border-radius-sm
+      border: none
+      background-color: v.$primary-red
+      color: v.$white
+      cursor: pointer
+      font-size: 1.5rem
+      display: flex
+      align-items: center
+      transition: v.$transition-default
+
+      &:hover
+        background-color: v.$primary-dark-red
+        color: v.$primary-red
+
+@media screen and (max-width: v.$mobile-breakpoint)
+  #navbar h2 a
+    font-size: 1.2rem

@@ -1,0 +1,31 @@
+@use './styles/variables' as v
+
+.app-container
+  display: flex
+  flex-direction: column
+  min-height: 100vh
+  background-color: v.$dark-bg
+  padding-top: 4rem
+
+.content
+  flex: 1
+
+.scroll-to-top-button
+  position: fixed
+  bottom: v.$spacing-2xl
+  right: v.$spacing-2xl
+  z-index: 1000
+  background-color: v.$primary-red
+  color: v.$white
+  border: none
+  border-radius: v.$border-radius-full
+  width: 70px
+  height: 70px
+  font-size: 66px
+  cursor: pointer
+  box-shadow: 5px 2px 5px rgba(0, 0, 0, 0.3)
+  transition: opacity v.$transition-smooth
+
+  &:hover
+    background-color: v.$white
+    color: v.$primary-red

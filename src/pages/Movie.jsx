@@ -9,7 +9,7 @@ import {
     BsClipboard,
     BsTranslate,
     BsGlobe  } from "react-icons/bs"
-import './Movie.css'
+import './Movie.sass'
 import MovieCard from "../components/MovieCard"
 import useCountryTranslation from "../hooks/useCountryTranslation"
 

@@ -1,5 +1,5 @@
 import { Outlet } from 'react-router-dom'
-import './App.css'
+import './App.sass'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import ScrollToTopButton from './components/ScrollToTopButton'

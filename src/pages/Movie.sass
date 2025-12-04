@@ -1,0 +1,63 @@
+@use '../styles/variables' as v
+
+.movie-page
+  display: flex
+  flex-direction: column
+  max-width: 800px
+  margin: v.$spacing-md auto
+
+  svg
+    font-size: 1.3rem
+
+  .movie-card
+    text-align: center
+
+    img,
+    h3,
+    p
+      margin-bottom: v.$spacing-sm
+
+    h3
+      font-size: 1.6rem
+
+    p
+      display: flex
+      align-items: center
+      justify-content: center
+      gap: v.$spacing-sm
+
+.tagline
+  text-align: center
+  font-size: 1.2rem
+  margin-bottom: v.$spacing-lg
+
+.info
+  margin-bottom: v.$spacing-md
+
+  h4
+    display: flex
+    margin-bottom: v.$spacing-sm
+    align-items: center
+    gap: v.$spacing-sm
+
+.description p
+  line-height: 1.7rem
+
+.back-page
+  cursor: pointer
+  position: fixed
+  left: 30px
+  padding: v.$spacing-sm
+  border-radius: v.$border-radius-sm
+  border: none
+  background-color: v.$white
+  color: v.$primary-red
+  align-items: center
+  transition: v.$transition-default
+  text-align: center
+  font-weight: bold
+  font-size: 1.3rem
+
+  &:hover
+    background-color: v.$primary-dark-red
+    color: v.$white

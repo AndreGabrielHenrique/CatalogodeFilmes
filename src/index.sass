@@ -1,0 +1,19 @@
+@use './styles/variables' as v
+
+*
+  font-family: v.$font-family-main
+  margin: 0
+  padding: 0
+  box-sizing: border-box
+
+body
+  background-color: v.$dark-bg
+  color: v.$white
+
+a
+  text-decoration: none
+  color: v.$primary-red
+  transition: v.$transition-fast
+
+  &:hover
+    color: v.$primary-dark-red
