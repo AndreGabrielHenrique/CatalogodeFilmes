@@ -1,36 +1,45 @@
-@use '../styles/variables' as v
+// ARQUIVO: src\pages\Movie.sass
+// CAMINHO RELATIVO: ./pages/Movie.sass
 
+@use '../styles/variables' as v // Importa variáveis de estilo
+
+// Container principal da página de detalhes do filme
 .movie-page
   display: flex
-  flex-direction: column
-  max-width: 800px
-  margin: v.$spacing-md auto
+  flex-direction: column // Layout em coluna
+  max-width: 800px // Largura máxima
+  margin: v.$spacing-md auto // Centraliza horizontalmente
 
+  // Estilo para todos os ícones SVG
   svg
-    font-size: 1.3rem
+    font-size: 1.3rem // Tamanho dos ícones
 
+  // Estilo para o cartão do filme dentro desta página
   .movie-card
-    text-align: center
+    text-align: center // Centraliza conteúdo
 
+    // Margem inferior para imagem, título e parágrafo
     img,
     h3,
     p
       margin-bottom: v.$spacing-sm
 
     h3
-      font-size: 1.6rem
+      font-size: 1.6rem // Tamanho do título
 
     p
       display: flex
       align-items: center
       justify-content: center
-      gap: v.$spacing-sm
+      gap: v.$spacing-sm // Espaçamento entre ícone e texto
 
+// Estilo para tagline (frase de efeito) do filme
 .tagline
   text-align: center
   font-size: 1.2rem
   margin-bottom: v.$spacing-lg
 
+// Estilo para cada seção de informação
 .info
   margin-bottom: v.$spacing-md
 
@@ -38,26 +47,29 @@
     display: flex
     margin-bottom: v.$spacing-sm
     align-items: center
-    gap: v.$spacing-sm
+    gap: v.$spacing-sm // Espaçamento entre ícone e texto
 
+// Estilo específico para a seção de sinopse
 .description p
-  line-height: 1.7rem
+  line-height: 1.7rem // Altura da linha para melhor legibilidade
 
+// Estilo para o botão/link "Voltar"
 .back-page
-  cursor: pointer
-  position: fixed
-  left: 30px
+  cursor: pointer // Cursor pointer para indicar clicável
+  position: fixed // Posicionamento fixo na tela
+  left: 30px // Distância da esquerda
   padding: v.$spacing-sm
   border-radius: v.$border-radius-sm
   border: none
   background-color: v.$white
   color: v.$primary-red
   align-items: center
-  transition: v.$transition-default
+  transition: v.$transition-default // Transição suave para hover
   text-align: center
   font-weight: bold
   font-size: 1.3rem
 
+  // Efeito hover
   &:hover
     background-color: v.$primary-dark-red
     color: v.$white

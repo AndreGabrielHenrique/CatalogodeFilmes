@@ -1,4 +1,10 @@
-# Logs
+# ARQUIVO: .gitignore
+# CAMINHO RELATIVO: ./.gitignore
+
+# Este arquivo especifica quais arquivos e diretórios devem ser ignorados pelo Git
+# Arquivos e pastas listados aqui não serão versionados no controle de código
+
+# Logs de sistemas e depuradores
 logs
 *.log
 npm-debug.log*
@@ -7,20 +13,40 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
+# Diretório de dependências do Node.js (gerado pelo npm/yarn/pnpm)
 node_modules
+
+# Diretório de build (gerado pelo Vite/outras ferramentas de build)
 dist
+
+# Diretório de build para renderização do lado do servidor (SSR)
 dist-ssr
+
+# Arquivos de ambiente local (ex: .env.local) - geralmente contém configurações sensíveis
 *.local
+
+# Documentação em PDF específica do projeto (não deve ser versionada)
 DOCUMENTACAO.pdf
+
+# Diretório do GitHub Actions (se houver workflows específicos que não devem ser compartilhados)
 .github
 
-# Editor directories and files
+# Diretórios e arquivos de editores/IDEs
+# .vscode/ (mas permite o arquivo extensions.json)
 .vscode/*
 !.vscode/extensions.json
+
+# Diretório de configuração do IntelliJ IDEA
 .idea
+
+# Arquivo de metadados do macOS
 .DS_Store
+
+# Arquivos de projeto do Visual Studio (Windows)
 *.suo
 *.ntvs*
 *.njsproj
 *.sln
+
+# Arquivos de swap do Vim
 *.sw?

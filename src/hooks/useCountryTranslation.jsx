@@ -1,5 +1,9 @@
-import { useCallback } from "react"
+// ARQUIVO: src\hooks\useCountryTranslation.jsx
+// CAMINHO RELATIVO: ./hooks/useCountryTranslation.jsx
 
+import { useCallback } from "react" // Importa o hook useCallback do React para memorizar funções
+
+// Objeto que contém as traduções de nomes de países de inglês para português
 const countryTranslations = {
     "Afghanistan": "Afeganistão",
     "Albania": "Albânia",
@@ -169,13 +173,16 @@ const countryTranslations = {
     "Zimbabwe": "Zimbábue"
 }
 
-const useCountryTranslation=()=> {
+// Hook personalizado para traduzir nomes de países
+const useCountryTranslation = () => {
+    // Função memorizada (useCallback) que recebe um nome de país e retorna sua tradução
+    // Se a tradução não existir no objeto, retorna o próprio nome recebido
     const translateCountry = useCallback (
-        (country) => countryTranslations[country] || country,
-        []
+        (country) => countryTranslations[country] || country, // Busca tradução ou usa original
+        [] // Array de dependências vazio: função é criada apenas uma vez
     )
 
-    return { translateCountry }
+    return { translateCountry } // Retorna objeto com a função de tradução
 }
 
-export default useCountryTranslation
+export default useCountryTranslation // Exporta o hook como padrão

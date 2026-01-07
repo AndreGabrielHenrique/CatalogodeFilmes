@@ -1,10 +1,13 @@
-@use '../styles/variables' as v
+// ARQUIVO: src\components\Footer.sass
+// CAMINHO RELATIVO: ./components/Footer.sass
 
-#footer
-  background-color: v.$white
-  padding: v.$spacing-2xl
+@use '../styles/variables' as v // Importa variáveis de estilo do diretório styles com alias 'v'
 
-h1
-  color: v.$primary-red
-  text-align: center
-  font-size: v.$spacing-3xl
+#footer // Seletor para o elemento com id "footer"
+  background-color: v.$white // Usa variável $white para cor de fundo
+  padding: v.$spacing-2xl // Usa variável $spacing-2xl para preenchimento interno
+
+h1 // Seletor para todos os elementos h1 dentro deste componente
+  color: v.$primary-red // Usa variável $primary-red para cor do texto
+  text-align: center // Centraliza o texto horizontalmente
+  font-size: v.$spacing-3xl // Usa variável $spacing-3xl para tamanho da fonte

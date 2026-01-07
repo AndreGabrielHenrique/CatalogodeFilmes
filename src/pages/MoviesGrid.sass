@@ -1,41 +1,51 @@
-@use '../styles/variables' as v
+// ARQUIVO: src\pages\MoviesGrid.sass
+// CAMINHO RELATIVO: ./pages/MoviesGrid.sass
 
+@use '../styles/variables' as v // Importa variáveis de estilo
+
+// Estilo para o título da página (ex: "Resultados da busca por...")
 .container .title
   color: v.$white
   font-size: v.$spacing-3xl
   text-align: center
   margin: v.$spacing-xl 0 v.$spacing-xl
 
+  // Estilo para o texto da query dentro do título
   .query-text
     color: v.$primary-red
 
+// Container para a grade de filmes
 .movies-container
   display: flex
-  flex-wrap: wrap
-  justify-content: space-between
+  flex-wrap: wrap // Permite quebra de linha
+  justify-content: space-between // Espaço entre os itens
   padding: v.$spacing-md
   max-width: 100%
   margin: 0 auto
 
+  // Estilo para cada filme (div) dentro do container
   div
-    width: 30%
-    margin-bottom: v.$spacing-md
+    width: 30% // Cada filme ocupa 30% da largura (3 por linha)
+    margin-bottom: v.$spacing-md // Margem inferior
     display: flex
     flex-direction: column
     justify-content: space-between
     padding: v.$spacing-sm
 
+    // Estilo para imagem, parágrafo e título dentro do filme
     img
-      max-width: 100%
+      max-width: 100% // Imagem responsiva
 
     img,
     p,
     h3
       margin-bottom: 0.8rem
 
+    // Cor dos ícones (estrela)
     svg
       color: v.$white
 
+    // Estilo para o link "Ver detalhes"
     a
       padding: v.$spacing-md v.$spacing-xs
       border-radius: v.$border-radius-sm
@@ -43,23 +53,26 @@
       background-color: v.$white
       color: v.$primary-red
       align-items: center
-      transition: v.$transition-default
+      transition: v.$transition-default // Transição suave para hover
       text-align: center
       font-weight: bold
       font-size: 1.3rem
 
+      // Efeito hover
       &:hover
         background-color: v.$primary-dark-red
         color: v.$white
 
+// Estilo para mensagem "Nenhum resultado"
 .nenhum-resultado
   position: absolute
   top: 50%
   left: 50%
-  transform: translate(-50%, -50%)
+  transform: translate(-50%, -50%) // Centraliza vertical e horizontalmente
   text-align: center
   width: 100%
 
+// Estilo para mensagens de alerta (carregando, sem resultados, etc.)
 .alert
   text-align: center
   margin: 0 auto

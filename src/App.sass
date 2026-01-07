@@ -1,31 +1,38 @@
-@use './styles/variables' as v
+// ARQUIVO: src\App.sass
+// CAMINHO RELATIVO: ./App.sass
 
+@use './styles/variables' as v // Importa variáveis de estilo
+
+// Container principal da aplicação
 .app-container
   display: flex
-  flex-direction: column
-  min-height: 100vh
-  background-color: v.$dark-bg
-  padding-top: 4rem
+  flex-direction: column // Organiza os elementos em coluna
+  min-height: 100vh // Garante que o container ocupe pelo menos a altura total da viewport
+  background-color: v.$dark-bg // Cor de fundo
+  padding-top: 4rem // Preenchimento no topo para compensar a navbar fixa
 
+// Classe para o conteúdo principal
 .content
-  flex: 1
+  flex: 1 // Faz com que o conteúdo ocupe o espaço restante, empurrando o footer para baixo
 
+// Estilo para o botão de rolar para o topo
 .scroll-to-top-button
-  position: fixed
-  bottom: v.$spacing-2xl
-  right: v.$spacing-2xl
-  z-index: 1000
-  background-color: v.$primary-red
-  color: v.$white
-  border: none
-  border-radius: v.$border-radius-full
-  width: 70px
-  height: 70px
-  font-size: 66px
-  cursor: pointer
-  box-shadow: 5px 2px 5px rgba(0, 0, 0, 0.3)
-  transition: opacity v.$transition-smooth
+  position: fixed // Posicionamento fixo na tela
+  bottom: v.$spacing-2xl // Distância do fundo
+  right: v.$spacing-2xl // Distância da direita
+  z-index: 1000 // Garante que fique acima de outros elementos
+  background-color: v.$primary-red // Cor de fundo
+  color: v.$white // Cor do texto
+  border: none // Remove borda
+  border-radius: v.$border-radius-full // Torna o botão circular
+  width: 70px // Largura
+  height: 70px // Altura
+  font-size: 66px // Tamanho da fonte (seta para cima)
+  cursor: pointer // Cursor pointer para indicar clicável
+  box-shadow: 5px 2px 5px rgba(0, 0, 0, 0.3) // Sombra
+  transition: opacity v.$transition-smooth // Transição suave para a opacidade (não definida, mas pode ser usada)
 
+  // Efeito ao passar o mouse
   &:hover
-    background-color: v.$white
-    color: v.$primary-red
+    background-color: v.$white // Muda a cor de fundo para branco
+    color: v.$primary-red // Muda a cor do texto para vermelho

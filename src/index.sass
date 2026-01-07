@@ -1,19 +1,26 @@
-@use './styles/variables' as v
+// ARQUIVO: src\index.sass
+// CAMINHO RELATIVO: ./index.sass
 
-*
-  font-family: v.$font-family-main
-  margin: 0
-  padding: 0
-  box-sizing: border-box
+@use './styles/variables' as v // Importa variáveis de estilo
 
+// Reset e estilos globais
+* // Aplica a todos os elementos
+  font-family: v.$font-family-main // Define a fonte principal
+  margin: 0 // Remove margens padrão
+  padding: 0 // Remove preenchimentos padrão
+  box-sizing: border-box // Inclui padding e border na largura e altura
+
+// Estilos para o corpo da página
 body
-  background-color: v.$dark-bg
-  color: v.$white
+  background-color: v.$dark-bg // Cor de fundo
+  color: v.$white // Cor do texto
 
+// Estilos para links
 a
-  text-decoration: none
-  color: v.$primary-red
-  transition: v.$transition-fast
+  text-decoration: none // Remove sublinhado
+  color: v.$primary-red // Cor padrão dos links
+  transition: v.$transition-fast // Transição rápida para mudanças de cor
 
+  // Efeito ao passar o mouse
   &:hover
-    color: v.$primary-dark-red
+    color: v.$primary-dark-red // Muda a cor ao passar o mouse

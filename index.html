@@ -1,13 +1,20 @@
+<!-- ARQUIVO: index.html (arquivo HTML principal)
+CAMINHO RELATIVO: ./index.html -->
+
 <!doctype html>
-<html lang="pt-br">
+<html lang="pt-br"> <!-- Define o idioma da página como português do Brasil -->
   <head>
-    <meta charset="UTF-8" />
+    <meta charset="UTF-8" /> <!-- Define a codificação de caracteres como UTF-8 -->
+    <!-- Ícone da aba do navegador (favicon) -->
     <link rel="shortcut icon" href="src/assets/bx-camera-movie.svg" type="image/x-icon" />
+    <!-- Meta tag para responsividade, garantindo que a página se adapte a diferentes dispositivos -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Catálogo de Filmes</title>
+    <title>Catálogo de Filmes</title> <!-- Título da página que aparece na aba do navegador -->
   </head>
   <body>
+    <!-- Div onde a aplicação React será montada -->
     <div id="root"></div>
+    <!-- Script do módulo principal da aplicação, usando type="module" para suportar ES6 -->
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>

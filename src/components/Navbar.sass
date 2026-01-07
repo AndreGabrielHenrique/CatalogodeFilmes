@@ -1,51 +1,54 @@
-@use '../styles/variables' as v
+// ARQUIVO: src\components\Navbar.sass
+// CAMINHO RELATIVO: ./components/Navbar.sass
 
-#navbar
-  display: flex
-  justify-content: space-between
-  align-items: center
-  padding: v.$spacing-md v.$spacing-xl
-  background-color: v.$white
-  position: fixed
-  top: 0
-  left: 0
-  right: 0
-  z-index: 1000
+@use '../styles/variables' as v // Importa variáveis de estilo
 
-  h2 a
-    display: flex
-    align-items: center
-    gap: 0.7rem
+#navbar // Seletor para elemento com id "navbar"
+  display: flex // Usa Flexbox para layout
+  justify-content: space-between // Distribui espaço entre os itens (título e formulário)
+  align-items: center // Alinha itens verticalmente ao centro
+  padding: v.$spacing-md v.$spacing-xl // Preenchimento: vertical com $spacing-md, horizontal com $spacing-xl
+  background-color: v.$white // Cor de fundo branca
+  position: fixed // Posicionamento fixo na tela
+  top: 0 // Fixa no topo da janela
+  left: 0 // Alinha à esquerda
+  right: 0 // Alinha à direita
+  z-index: 1000 // Z-index alto para ficar acima de outros elementos
 
-  form
-    display: flex
-    gap: v.$spacing-sm
+  h2 a // Estiliza links dentro de h2
+    display: flex // Usa Flexbox
+    align-items: center // Alinha ícone e texto verticalmente
+    gap: 0.7rem // Espaçamento entre ícone e texto
 
-    input
-      padding: v.$spacing-xs v.$spacing-sm
-      border-radius: v.$border-radius-sm
-      border: 1px solid v.$primary-red
-      outline: none
+  form // Estiliza formulário
+    display: flex // Usa Flexbox
+    gap: v.$spacing-sm // Espaçamento entre input e botão
 
-      &::placeholder
-        color: v.$dark-bg
+    input // Estiliza input de texto
+      padding: v.$spacing-xs v.$spacing-sm // Preenchimento interno
+      border-radius: v.$border-radius-sm // Borda arredondada
+      border: 1px solid v.$primary-red // Cor da borda
+      outline: none // Remove contorno padrão
 
-    button
-      padding: v.$spacing-xs
-      border-radius: v.$border-radius-sm
-      border: none
-      background-color: v.$primary-red
-      color: v.$white
-      cursor: pointer
-      font-size: 1.5rem
-      display: flex
-      align-items: center
-      transition: v.$transition-default
+      &::placeholder // Estiliza placeholder do input
+        color: v.$dark-bg // Cor do texto placeholder
 
-      &:hover
-        background-color: v.$primary-dark-red
-        color: v.$primary-red
+    button // Estiliza botão
+      padding: v.$spacing-xs // Preenchimento interno
+      border-radius: v.$border-radius-sm // Borda arredondada
+      border: none // Remove borda padrão
+      background-color: v.$primary-red // Cor de fundo
+      color: v.$white // Cor do texto
+      cursor: pointer // Cursor pointer ao passar mouse
+      font-size: 1.5rem // Tamanho da fonte
+      display: flex // Usa Flexbox
+      align-items: center // Centraliza ícone verticalmente
+      transition: v.$transition-default // Transição suave para efeitos hover
 
-@media screen and (max-width: v.$mobile-breakpoint)
-  #navbar h2 a
-    font-size: 1.2rem
+      &:hover // Efeito ao passar mouse
+        background-color: v.$primary-dark-red // Muda cor de fundo
+        color: v.$primary-red // Muda cor do texto
+
+@media screen and (max-width: v.$mobile-breakpoint) // Media query para telas menores que $mobile-breakpoint
+  #navbar h2 a // Estiliza links dentro de h2 na navbar em telas pequenas
+    font-size: 1.2rem // Reduz tamanho da fonte
